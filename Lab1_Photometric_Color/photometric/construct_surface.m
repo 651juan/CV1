@@ -34,14 +34,21 @@ switch path_type
               height_map(c,r) = height_map(c,r-1) + p(c,r);
           end
        end
-       d = 1
         % =================================================================
                
     case 'row'
-        
+
         % =================================================================
         % YOUR CODE GOES HERE
-        
+       for r = 1:size(p,2)
+          if r ~= 1 
+            height_map(1,r) = height_map(1,r-1) + q(1,r);
+          end 
+          for c = 2:size(p,1)
+              height_map(c,r) = height_map(c-1,r) + p(c,r);
+          end
+       end
+
 
         % =================================================================
           
