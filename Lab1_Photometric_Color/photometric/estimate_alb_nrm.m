@@ -35,12 +35,12 @@ for x = 1:size(image_stack,1)
            i(n) = image_stack(x,y,n);
         end
         scriptI = diag(i);
-        g = linsolve((scriptI * scriptV), (scriptI * i'));
-        if norm(g) > 1
-            albedo(x,y) = 1;
-        else
-            albedo(x,y) = norm (g);
-        end
+        [g, ~] = linsolve((scriptI * scriptV), (scriptI * i'));
+        %if norm(g) > 1
+            %albedo(x,y) = 1;
+        %else
+            albedo(x,y) = norm(g);
+        %end
         if norm(g) ~= 0 
             normal(x,y,:) = g / albedo(x,y);
         else 

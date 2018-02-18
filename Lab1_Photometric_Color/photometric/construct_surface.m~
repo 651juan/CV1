@@ -27,14 +27,13 @@ switch path_type
         %       height_value = previous_height_value + corresponding_p_value
       
        for c = 1:size(p,1)
-          if c ~= 1 
-            height_map(c,1) = height_map(c-1,1) + q(c,1);
-          end 
-          for r = 2:size(p,2)
-              height_map(c,r) = height_map(c,r-1) + p(c,r);
+          for r = 1:size(p,y)
+              if c ~= 1 
+                height_map(c,r) = height_map(c-1,r) + q(c,r);
+              end
           end
+          
        end
-       d = 1
         % =================================================================
                
     case 'row'
