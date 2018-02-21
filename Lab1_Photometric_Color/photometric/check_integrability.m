@@ -23,14 +23,21 @@ p(isnan(p)) = 0;
 q(isnan(q)) = 0;
 for x = 1:size(normals,1)
     for y = 1:size(normals,2)
-        p(x,y) = normals(x,y,1) / normals(x,y,3);
-        q(x,y) = normals(x,y,2) / normals(x,y,3);
+        p(x,y) = -normals(x,y,1) ./ normals(x,y,3);
+        q(x,y) = -normals(x,y,2) ./ normals(x,y,3);
         if (isnan(p(x,y)))
             p(x,y) = 0;
         end
         if (isnan(q(x,y)))
             q(x,y) = 0;
         end
+        if (isinf(p(x,y)))
+           p(x,y) = 0;
+        end
+        if (isinf(q(x,y))) 
+           q(x,y) = 0; 
+        end
+
     end
 end
 
@@ -46,7 +53,7 @@ for x = 1:size(normals,1)
             P_Y = p(x,y) - p(x,y-1);
             Q_X = q(x,y) - q(x-1,y);
             SE(x,y) = (P_Y - Q_X)^2;
-            if (p(x,y) ~=0)
+            if (p(x,y) == -inf)
                d = 1; 
             end
         end

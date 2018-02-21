@@ -9,7 +9,7 @@ disp('Loading images...')
 image_dir = 'photometrics_images/MonkeyColor/';   % TODO: get the path of the script
 %image_ext = '*.png';
 
-[image_stack, scriptV] = load_syn_images_append(image_dir);
+[image_stack, scriptV] = load_syn_images(image_dir);
 
 [h, w, n] = size(image_stack);
 fprintf('Finish loading %d images.\n\n', n);

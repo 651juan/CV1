@@ -34,13 +34,13 @@ for x = 1:size(image_stack,1)
         for n = 1:size(image_stack,3)
            i(n) = image_stack(x,y,n);
         end
-        scriptI = diag(i);
-        [g, ~] = linsolve((scriptI * scriptV), (scriptI * i'));
-        %if norm(g) > 1
-            %albedo(x,y) = 1;
-        %else
-            albedo(x,y) = norm(g);
-        %end
+        if shadow_trick
+            scriptI = diag(i);
+            [g, ~] = linsolve((scriptI * scriptV), (scriptI * i'));
+        else 
+            [g, ~] = linsolve(scriptV, i');
+        end
+        albedo(x,y) = norm(g);
         if norm(g) ~= 0 
             normal(x,y,:) = g / albedo(x,y);
         else 
