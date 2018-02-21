@@ -28,15 +28,11 @@ normal = zeros(h, w, 3);
 %   normal at this point is g / |g|
 for x = 1:w
     for y = 1:h
-        s=size(image_stack(x,y,:));
-        i1 = zeros(1,size(image_stack,3)/3);
-        i2 = zeros(1,size(image_stack,3)/3);
-        i3 = zeros(1,size(image_stack,3)/3);
+        shape = size(image_stack(x,y,:));
 
-
-        i1 = double(reshape(image_stack(x,y,1:3:s(3)), s(3)/3, 1));
-		i2 = double(reshape(image_stack(x,y,2:3:s(3)), s(3)/3, 1));
-		i3 = double(reshape(image_stack(x,y,3:3:s(3)), s(3)/3, 1));
+        i1 = double(reshape(image_stack(x,y,1:3:shape(3)), shape(3)/3, 1));
+		i2 = double(reshape(image_stack(x,y,2:3:shape(3)), shape(3)/3, 1));
+		i3 = double(reshape(image_stack(x,y,3:3:shape(3)), shape(3)/3, 1));
         
         scriptI1 = diag(i1);
         scriptI2 = diag(i2);
