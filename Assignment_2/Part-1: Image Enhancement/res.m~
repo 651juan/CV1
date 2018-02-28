@@ -1,0 +1,58 @@
+% input_image = imread('images/image1.jpg');
+% salt_image = imread('images/image1_saltpepper.jpg');
+% gaussian_image = imread('images/image1_gaussian.jpg');
+% disp(myPSNR(input_image,salt_image))
+% 
+% box3 = denoise(gaussian_image,'box',3);
+% box5 = denoise(gaussian_image,'box',5);
+% box7 = denoise(gaussian_image,'box',25);
+% disp(myPSNR(input_image,box3))
+% disp(myPSNR(input_image,box5))
+% disp(myPSNR(input_image,box7))
+% 
+% subplot(2,2,1) 
+% imshow(gaussian_image);
+% title('Input image') 
+% 
+% subplot(2,2,2) 
+% imshow(uint8(box3));
+% title('0.5 σ') 
+% 
+% subplot(2,2,3) 
+% imshow(uint8(box5));
+% title('1 σ') 
+% 
+% subplot(2,2,4) 
+% imshow(uint8(box7));
+% title('2 σ') 
+
+% input_image = imread('images/image2.jpg');
+% [x,y,mag,dir] = compute_gradient(input_image);
+% 
+% x = x./255;
+% y = y./255;
+% [rmag, rdir] = imgradient(input_image);
+% 
+% subplot(2,2,1)
+% imshow(x);
+% title('The gradient of the image in the x-direction.');
+% 
+% subplot(2,2,2)
+% imshow(y);
+% title('The gradient of the image in the y-direction.');
+% 
+% subplot(2,2,3)
+% imshow(mag, []);
+% title('The gradient magnitude of each pixel.');
+% 
+% subplot(2,2,4)
+% imshow(rdir, []);
+% title('The gradient direction of each pixel.');
+
+
+
+input_image = imread('images/image2.jpg');
+
+out2 = compute_LoG(input_image,1);
+out3 = compute_LoG(input_image,1);
+out4 = compute_LoG(input_image,1);

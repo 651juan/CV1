@@ -4,8 +4,9 @@ switch kernel_type
     case 'box'
         imOut = imboxfilt(image, varargin{1});
     case 'median'
-        imOut = medfilt2(image);
+        imOut = medfilt2(image, [varargin{1}, varargin{1}]);
     case 'gaussian'
-        fprintf('Not implemented\n')
+        gaussian = gauss2D(varargin{1}, varargin{2});
+        imOut = conv(image,gaussian);
 end
 end
