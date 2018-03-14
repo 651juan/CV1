@@ -23,3 +23,9 @@ vl_plotframe(framesa(:,matches(1,:))) ;
 framesb(1,:) = framesb(1,:) + size(image1,2) ;
 vl_plotframe(framesb(:,matches(2,:))) ;
 axis image off ;
+
+
+[W, T] = RANSAC(framesa, framesb, matches);
+%the W, T are the :
+%W = [m1 m2 ; m3 m4];
+%T = [t1 ; t2];
