@@ -29,3 +29,6 @@ axis image off ;
 %the W, T are the :
 %W = [m1 m2 ; m3 m4];
 %T = [t1 ; t2];
+output = transform(W,T,image2);
+
+
